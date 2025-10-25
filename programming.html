@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programlama Eğitimi - QuzeyLearn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none;">
+                    <h2 style="color: #735d88;">QuzeyLearn</h2>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="programs.html" class="nav-link">İngilizce Dersleri</a>
+                <a href="bookclub.html" class="nav-link">Kitap Kulübü</a>
+                <a href="programming.html" class="nav-link active">Programlama</a>
+                <a href="index.html#contact" class="nav-link">İletişim</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Programlama Eğitimi</h1>
+                <p class="hero-subtitle">Geleceğin Yazılımcılarını Yetiştiriyoruz</p>
+                <p class="hero-description">
+                    Yaş gruplarına özel programlama eğitimi. Scratch'ten başlayarak HTML, CSS, JavaScript ve Python'a kadar 
+                    çocuklarınızın kodlama yolculuğunda yanlarındayız.
+                </p>
+            </div>
+            <div class="hero-image">
+                <div class="hero-logo">
+                    <img src="learn.jpeg" alt="QuzeyLearn Logo" class="hero-logo-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Levels Section -->
+    <section class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Yaş Gruplarına Göre Programlama Eğitimi</h2>
+                <p>Her yaş grubu için özel olarak tasarlanmış programlama dilleri ve metodları</p>
+            </div>
+            <div class="programming-levels">
+                <!-- Level 1: Scratch -->
+                <div class="level-card">
+                    <div class="level-header">
+                        <div class="level-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <div class="level-info">
+                            <h3>Scratch Programlama</h3>
+                            <span class="age-group">7-10 yaş</span>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Blok tabanlı programlama ile kodlama dünyasına giriş. Renkli bloklarla oyun ve animasyon yapımı.</p>
+                        <div class="level-features">
+                            <div class="feature">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Oyun Geliştirme</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-palette"></i>
+                                <span>Animasyon Tasarımı</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-robot"></i>
+                                <span>Robotik Projeler</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level 2: HTML/CSS -->
+                <div class="level-card">
+                    <div class="level-header">
+                        <div class="level-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="level-info">
+                            <h3>Web Tasarım (HTML/CSS)</h3>
+                            <span class="age-group">10-13 yaş</span>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Web siteleri tasarlama ve geliştirme. HTML ve CSS ile kendi web sayfalarını oluşturma.</p>
+                        <div class="level-features">
+                            <div class="feature">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Web Sitesi Tasarımı</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>CSS Styling</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>Responsive Tasarım</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level 3: JavaScript -->
+                <div class="level-card">
+                    <div class="level-header">
+                        <div class="level-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="level-info">
+                    <h3>Java Programlama</h3>
+                    <span class="age-group">12-15 yaş</span>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Java programlama dili ile uygulama geliştirme. Nesne yönelimli programlama ve gerçek dünya projeleri.</p>
+                        <div class="level-features">
+                            <div class="feature">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <span>Etkileşimli Uygulamalar</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-gamepad"></i>
+                                <span>Web Oyunları</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Veri İşleme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level 4: Python -->
+                <div class="level-card">
+                    <div class="level-header">
+                        <div class="level-icon">
+                            <i class="fas fa-snake"></i>
+                        </div>
+                        <div class="level-info">
+                            <h3>Python Programlama</h3>
+                            <span class="age-group">14-17 yaş</span>
+                        </div>
+                    </div>
+                    <div class="level-content">
+                        <p>Gerçek programlama dünyasına adım. Python ile yapay zeka, veri analizi ve uygulama geliştirme.</p>
+                        <div class="level-features">
+                            <div class="feature">
+                                <i class="fas fa-brain"></i>
+                                <span>Yapay Zeka Projeleri</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Veri Analizi</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-desktop"></i>
+                                <span>Masaüstü Uygulamaları</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programming Benefits Section -->
+    <section class="mission">
+        <div class="container">
+            <div class="section-header">
+                <h2>Programlama Eğitiminin Faydaları</h2>
+                <p>Çocuklarınızın geleceğine yatırım yapın</p>
+            </div>
+            <div class="scratch-features">
+                <div class="feature-highlight">
+                    <h3>Programlama Öğrenmenin Avantajları</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <h4>Algoritmik Düşünce</h4>
+                            <p>Problem çözme becerilerini geliştirir ve mantıksal düşünmeyi güçlendirir</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Yaratıcılık</h4>
+                            <p>Hayal gücünü kodlama ile birleştirerek yaratıcı projeler geliştirir</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Mantıksal Düşünce</h4>
+                            <p>Sıralı düşünme ve analitik becerileri geliştirir</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-trophy"></i>
+                            <h4>Özgüven</h4>
+                            <p>Kendi projelerini yapma başarısı ile özgüven kazanır</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <h4>Takım Çalışması</h4>
+                            <p>Proje tabanlı öğrenme ile işbirliği becerilerini geliştirir</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Gelecek Hazırlığı</h4>
+                            <p>Teknoloji dünyasında başarılı olmak için gerekli becerileri kazanır</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hemen Başlayın!</h2>
+                <p>Çocuğunuzun yaşına uygun programlama eğitimine başlamak için bizimle iletişime geçin</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="index.html#contact" class="btn btn-primary">İletişime Geç</a>
+                <a href="index.html" class="btn btn-secondary">Ana Sayfaya Dön</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>QuzeyLearn</h3>
+                    <p>Çocukların yabancı dili sevmesi için öğrencilerimizle çalışan eğitim girişimi.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hızlı Linkler</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="programs.html">İngilizce Dersleri</a></li>
+                        <li><a href="bookclub.html">Kitap Kulübü</a></li>
+                        <li><a href="programming.html">Programlama</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <p>info@quzeylearn.com</p>
+                    <p>+90 (212) 555 0123</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 QuzeyLearn. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

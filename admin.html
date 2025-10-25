@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuzeyLearn - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #735d88, #b681b5);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #735d88;
+        }
+        
+        .btn-admin {
+            background: #735d88;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-admin:hover {
+            background: #b681b5;
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+        
+        .book-preview {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            border-left: 4px solid #735d88;
+        }
+        
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-tab {
+            padding: 12px 24px;
+            background: #e5e7eb;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tab.active {
+            background: #735d88;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-cog"></i> QuzeyLearn Admin Panel</h1>
+            <p>Site içeriğini yönetin ve güncelleyin</p>
+        </div>
+        
+        <div class="admin-nav">
+            <button class="nav-tab active" onclick="showTab('books')">
+                <i class="fas fa-book"></i> Kitap Yönetimi
+            </button>
+            <button class="nav-tab" onclick="showTab('programs')">
+                <i class="fas fa-graduation-cap"></i> Program Yönetimi
+            </button>
+            <button class="nav-tab" onclick="showTab('contact')">
+                <i class="fas fa-envelope"></i> İletişim Bilgileri
+            </button>
+        </div>
+        
+        <!-- Kitap Yönetimi -->
+        <div id="books" class="tab-content active">
+            <div class="admin-section">
+                <h2><i class="fas fa-book"></i> Ayın Kitabı</h2>
+                <div class="success-message" id="book-success">
+                    Kitap bilgileri başarıyla güncellendi!
+                </div>
+                
+                <form id="book-form">
+                    <div class="form-group">
+                        <label for="book-title">Kitap Adı:</label>
+                        <input type="text" id="book-title" name="title" value="Charlie'nin Çikolata Fabrikası" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-author">Yazar:</label>
+                        <input type="text" id="book-author" name="author" value="Roald Dahl" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-description">Kitap Açıklaması:</label>
+                        <textarea id="book-description" name="description" rows="4" required>Roald Dahl'ın klasik eseri ile çocuklarımız hem eğlenceli bir hikaye okuyacak hem de İngilizce kelime dağarcıklarını geliştirecekler. Willy Wonka'nın büyülü dünyasında macera dolu bir yolculuk.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-duration">Süre:</label>
+                        <input type="text" id="book-duration" name="duration" value="4 hafta süre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-group-size">Grup Büyüklüğü:</label>
+                        <input type="text" id="book-group-size" name="groupSize" value="5-8 kişilik gruplar" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="book-session">Seans Süresi:</label>
+                        <input type="text" id="book-session" name="session" value="45 dakika seanslar" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-admin">
+                        <i class="fas fa-save"></i> Kitap Bilgilerini Güncelle
+                    </button>
+                </form>
+                
+                <div class="book-preview">
+                    <h3>Önizleme:</h3>
+                    <div id="book-preview-content">
+                        <!-- Önizleme burada gösterilecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Program Yönetimi -->
+        <div id="programs" class="tab-content">
+            <div class="admin-section">
+                <h2><i class="fas fa-graduation-cap"></i> Program Bilgileri</h2>
+                <div class="success-message" id="program-success">
+                    Program bilgileri başarıyla güncellendi!
+                </div>
+                
+                <form id="program-form">
+                    <div class="form-group">
+                        <label for="program-title">Program Başlığı:</label>
+                        <input type="text" id="program-title" name="title" value="İngilizce Dersleri" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="program-subtitle">Alt Başlık:</label>
+                        <input type="text" id="program-subtitle" name="subtitle" value="Çocukların Yabancı Dili Sevmesi İçin" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="program-description">Program Açıklaması:</label>
+                        <textarea id="program-description" name="description" rows="4" required>Yaş gruplarına özel İngilizce eğitimi. Şarkılar, oyunlar ve interaktif aktivitelerle çocuklarınızın dil öğrenme sürecini keyifli hale getiriyoruz.</textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-admin">
+                        <i class="fas fa-save"></i> Program Bilgilerini Güncelle
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- İletişim Bilgileri -->
+        <div id="contact" class="tab-content">
+            <div class="admin-section">
+                <h2><i class="fas fa-envelope"></i> İletişim Bilgileri</h2>
+                <div class="success-message" id="contact-success">
+                    İletişim bilgileri başarıyla güncellendi!
+                </div>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="contact-email">E-posta:</label>
+                        <input type="email" id="contact-email" name="email" value="info@quzeylearn.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-phone">Telefon:</label>
+                        <input type="tel" id="contact-phone" name="phone" value="+90 (212) 555 0123" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact-address">Adres:</label>
+                        <input type="text" id="contact-address" name="address" value="İstanbul, Türkiye" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-admin">
+                        <i class="fas fa-save"></i> İletişim Bilgilerini Güncelle
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <h3><i class="fas fa-info-circle"></i> Nasıl Kullanılır?</h3>
+            <ol>
+                <li>Yukarıdaki sekmelerden istediğiniz bölümü seçin</li>
+                <li>Bilgileri düzenleyin</li>
+                <li>"Güncelle" butonuna tıklayın</li>
+                <li>Değişiklikler otomatik olarak ana sitede görünecek</li>
+            </ol>
+            
+            <div style="margin-top: 2rem;">
+                <a href="index.html" class="btn-admin btn-secondary">
+                    <i class="fas fa-home"></i> Ana Siteye Dön
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all nav tabs
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked nav tab
+            event.target.classList.add('active');
+        }
+        
+        // Book form handling
+        document.getElementById('book-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const bookData = {
+                title: formData.get('title'),
+                author: formData.get('author'),
+                description: formData.get('description'),
+                duration: formData.get('duration'),
+                groupSize: formData.get('groupSize'),
+                session: formData.get('session')
+            };
+            
+            // Save to localStorage (in real app, this would go to a database)
+            localStorage.setItem('bookData', JSON.stringify(bookData));
+            
+            // Show success message
+            document.getElementById('book-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('book-success').style.display = 'none';
+            }, 3000);
+            
+            // Update preview
+            updateBookPreview(bookData);
+        });
+        
+        // Program form handling
+        document.getElementById('program-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const programData = {
+                title: formData.get('title'),
+                subtitle: formData.get('subtitle'),
+                description: formData.get('description')
+            };
+            
+            localStorage.setItem('programData', JSON.stringify(programData));
+            
+            document.getElementById('program-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('program-success').style.display = 'none';
+            }, 3000);
+        });
+        
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const contactData = {
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address')
+            };
+            
+            localStorage.setItem('contactData', JSON.stringify(contactData));
+            
+            document.getElementById('contact-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('contact-success').style.display = 'none';
+            }, 3000);
+        });
+        
+        // Update book preview
+        function updateBookPreview(bookData) {
+            const preview = document.getElementById('book-preview-content');
+            preview.innerHTML = `
+                <h4>${bookData.title}</h4>
+                <p><strong>Yazar:</strong> ${bookData.author}</p>
+                <p><strong>Açıklama:</strong> ${bookData.description}</p>
+                <p><strong>Süre:</strong> ${bookData.duration}</p>
+                <p><strong>Grup:</strong> ${bookData.groupSize}</p>
+                <p><strong>Seans:</strong> ${bookData.session}</p>
+            `;
+        }
+        
+        // Load saved data on page load
+        window.addEventListener('load', function() {
+            // Load book data
+            const savedBookData = localStorage.getItem('bookData');
+            if (savedBookData) {
+                const bookData = JSON.parse(savedBookData);
+                document.getElementById('book-title').value = bookData.title;
+                document.getElementById('book-author').value = bookData.author;
+                document.getElementById('book-description').value = bookData.description;
+                document.getElementById('book-duration').value = bookData.duration;
+                document.getElementById('book-group-size').value = bookData.groupSize;
+                document.getElementById('book-session').value = bookData.session;
+                updateBookPreview(bookData);
+            }
+            
+            // Load program data
+            const savedProgramData = localStorage.getItem('programData');
+            if (savedProgramData) {
+                const programData = JSON.parse(savedProgramData);
+                document.getElementById('program-title').value = programData.title;
+                document.getElementById('program-subtitle').value = programData.subtitle;
+                document.getElementById('program-description').value = programData.description;
+            }
+            
+            // Load contact data
+            const savedContactData = localStorage.getItem('contactData');
+            if (savedContactData) {
+                const contactData = JSON.parse(savedContactData);
+                document.getElementById('contact-email').value = contactData.email;
+                document.getElementById('contact-phone').value = contactData.phone;
+                document.getElementById('contact-address').value = contactData.address;
+            }
+        });
+    </script>
+</body>
+</html>

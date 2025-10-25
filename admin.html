@@ -316,17 +316,18 @@
         // Admin password (change this to your desired password)
         const ADMIN_PASSWORD = "1234";
         
-        // Simple test function
+        // Login function
         function testLogin() {
             const password = document.getElementById('admin-password').value;
-            alert('Girilen şifre: ' + password + '\nBeklenen şifre: ' + ADMIN_PASSWORD);
+            const errorDiv = document.getElementById('login-error');
             
             if (password === ADMIN_PASSWORD) {
-                alert('Şifre doğru! Admin paneli açılıyor...');
+                localStorage.setItem('adminLoggedIn', 'true');
                 showAdminContent();
+                errorDiv.style.display = 'none';
             } else {
-                alert('Şifre yanlış!');
-                document.getElementById('login-error').style.display = 'block';
+                errorDiv.style.display = 'block';
+                document.getElementById('admin-password').value = '';
             }
         }
         

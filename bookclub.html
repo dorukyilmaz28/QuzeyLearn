@@ -262,5 +262,44 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Admin panel verilerini yükle
+        function loadAdminData() {
+            // Kitap verilerini yükle
+            const bookData = localStorage.getItem('bookData');
+            if (bookData) {
+                const book = JSON.parse(bookData);
+                
+                // Kitap adını güncelle
+                const bookTitle = document.querySelector('.book-details h3');
+                if (bookTitle) {
+                    bookTitle.textContent = book.title;
+                }
+                
+                // Yazarı güncelle
+                const bookAuthor = document.querySelector('.book-author');
+                if (bookAuthor) {
+                    bookAuthor.textContent = book.author;
+                }
+                
+                // Açıklamayı güncelle
+                const bookDescription = document.querySelector('.book-description');
+                if (bookDescription) {
+                    bookDescription.textContent = book.description;
+                }
+                
+                // Bilgi öğelerini güncelle
+                const infoItems = document.querySelectorAll('.info-item');
+                if (infoItems.length >= 3) {
+                    infoItems[0].querySelector('span').textContent = book.duration;
+                    infoItems[1].querySelector('span').textContent = book.groupSize;
+                    infoItems[2].querySelector('span').textContent = book.session;
+                }
+            }
+        }
+        
+        // Sayfa yüklendiğinde admin verilerini yükle
+        document.addEventListener('DOMContentLoaded', loadAdminData);
+    </script>
 </body>
 </html>

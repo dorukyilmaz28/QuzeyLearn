@@ -236,5 +236,36 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Admin panel verilerini yükle
+        function loadAdminData() {
+            // Program verilerini yükle
+            const programData = localStorage.getItem('programData');
+            if (programData) {
+                const program = JSON.parse(programData);
+                
+                // Program başlığını güncelle
+                const programTitle = document.querySelector('.hero-title');
+                if (programTitle) {
+                    programTitle.textContent = program.title;
+                }
+                
+                // Program alt başlığını güncelle
+                const programSubtitle = document.querySelector('.hero-subtitle');
+                if (programSubtitle) {
+                    programSubtitle.textContent = program.subtitle;
+                }
+                
+                // Program açıklamasını güncelle
+                const programDescription = document.querySelector('.hero-description');
+                if (programDescription) {
+                    programDescription.textContent = program.description;
+                }
+            }
+        }
+        
+        // Sayfa yüklendiğinde admin verilerini yükle
+        document.addEventListener('DOMContentLoaded', loadAdminData);
+    </script>
 </body>
 </html>

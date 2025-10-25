@@ -135,10 +135,37 @@
 </head>
 <body>
     <div class="admin-container">
-        <div class="admin-header">
-            <h1><i class="fas fa-cog"></i> QuzeyLearn Admin Panel</h1>
-            <p>Site içeriğini yönetin ve güncelleyin</p>
+        <!-- Login Form -->
+        <div id="login-section" class="admin-section" style="max-width: 400px; margin: 2rem auto;">
+            <div class="admin-header">
+                <h1><i class="fas fa-lock"></i> Admin Girişi</h1>
+                <p>Devam etmek için şifrenizi girin</p>
+            </div>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="admin-password">Şifre:</label>
+                    <input type="password" id="admin-password" name="password" placeholder="Admin şifresi" required>
+                </div>
+                <button type="button" class="btn-admin" style="width: 100%;" onclick="testLogin()">
+                    <i class="fas fa-sign-in-alt"></i> Giriş Yap
+                </button>
+            </form>
+            
+            <div id="login-error" style="color: #ef4444; margin-top: 1rem; text-align: center; display: none;">
+                <i class="fas fa-exclamation-triangle"></i> Yanlış şifre!
+            </div>
         </div>
+        
+        <!-- Admin Panel Content (Hidden by default) -->
+        <div id="admin-content" style="display: none;">
+            <div class="admin-header">
+                <h1><i class="fas fa-cog"></i> QuzeyLearn Admin Panel</h1>
+                <p>Site içeriğini yönetin ve güncelleyin</p>
+                <button onclick="logout()" class="btn-admin btn-secondary" style="margin-top: 1rem;">
+                    <i class="fas fa-sign-out-alt"></i> Çıkış Yap
+                </button>
+            </div>
         
         <div class="admin-nav">
             <button class="nav-tab active" onclick="showTab('books')">
@@ -282,9 +309,73 @@
                 </a>
             </div>
         </div>
+        </div>
     </div>
     
     <script>
+        // Admin password (change this to your desired password)
+        const ADMIN_PASSWORD = "1234";
+        
+        // Simple test function
+        function testLogin() {
+            const password = document.getElementById('admin-password').value;
+            alert('Girilen şifre: ' + password + '\nBeklenen şifre: ' + ADMIN_PASSWORD);
+            
+            if (password === ADMIN_PASSWORD) {
+                alert('Şifre doğru! Admin paneli açılıyor...');
+                showAdminContent();
+            } else {
+                alert('Şifre yanlış!');
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+        
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const isLoggedIn = localStorage.getItem('adminLoggedIn');
+            if (isLoggedIn === 'true') {
+                showAdminContent();
+            }
+            
+            // Login form handling
+            const loginForm = document.getElementById('login-form');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const password = document.getElementById('admin-password').value;
+                    const errorDiv = document.getElementById('login-error');
+                    
+                    console.log('Password entered:', password); // Debug
+                    console.log('Expected password:', ADMIN_PASSWORD); // Debug
+                    
+                    if (password === ADMIN_PASSWORD) {
+                        localStorage.setItem('adminLoggedIn', 'true');
+                        showAdminContent();
+                        errorDiv.style.display = 'none';
+                    } else {
+                        errorDiv.style.display = 'block';
+                        document.getElementById('admin-password').value = '';
+                    }
+                });
+            }
+        });
+        
+        // Show admin content
+        function showAdminContent() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('admin-content').style.display = 'block';
+            loadSavedData();
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('adminLoggedIn');
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('admin-content').style.display = 'none';
+            document.getElementById('admin-password').value = '';
+        }
+        
         // Tab switching
         function showTab(tabName) {
             // Hide all tabs
@@ -383,8 +474,8 @@
             `;
         }
         
-        // Load saved data on page load
-        window.addEventListener('load', function() {
+        // Load saved data function
+        function loadSavedData() {
             // Load book data
             const savedBookData = localStorage.getItem('bookData');
             if (savedBookData) {
@@ -415,7 +506,7 @@
                 document.getElementById('contact-phone').value = contactData.phone;
                 document.getElementById('contact-address').value = contactData.address;
             }
-        });
+        }
     </script>
 </body>
 </html>

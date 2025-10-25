@@ -162,9 +162,9 @@
                 </div>
                 <div style="margin-top: 2rem; text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
                     <a href="admin.html" style="background: #735d88; color: white; text-decoration: none; padding: 15px 30px; border-radius: 25px; font-size: 1rem; font-weight: 600; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(115, 93, 136, 0.3);">
-                        <i class="fas fa-cog"></i> Admin Panel
+                        <i class="fas fa-lock"></i> Admin Panel
                     </a>
-                    <p style="margin-top: 0.5rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Site içeriğini yönetin</p>
+                    <p style="margin-top: 0.5rem; color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">Şifre korumalı yönetim paneli</p>
                 </div>
                 </div>
                 <div class="contact-form">
@@ -218,5 +218,96 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Admin panel verilerini yükle
+        function loadAdminData() {
+            // Kitap verilerini yükle
+            const bookData = localStorage.getItem('bookData');
+            if (bookData) {
+                const book = JSON.parse(bookData);
+                
+                // Kitap adını güncelle
+                const bookTitle = document.querySelector('.book-details h3');
+                if (bookTitle) {
+                    bookTitle.textContent = book.title;
+                }
+                
+                // Yazarı güncelle
+                const bookAuthor = document.querySelector('.book-author');
+                if (bookAuthor) {
+                    bookAuthor.textContent = book.author;
+                }
+                
+                // Açıklamayı güncelle
+                const bookDescription = document.querySelector('.book-description');
+                if (bookDescription) {
+                    bookDescription.textContent = book.description;
+                }
+                
+                // Bilgi öğelerini güncelle
+                const infoItems = document.querySelectorAll('.info-item');
+                if (infoItems.length >= 3) {
+                    infoItems[0].querySelector('span').textContent = book.duration;
+                    infoItems[1].querySelector('span').textContent = book.groupSize;
+                    infoItems[2].querySelector('span').textContent = book.session;
+                }
+            }
+            
+            // Program verilerini yükle
+            const programData = localStorage.getItem('programData');
+            if (programData) {
+                const program = JSON.parse(programData);
+                
+                // Program başlığını güncelle
+                const programTitle = document.querySelector('.hero-title');
+                if (programTitle && window.location.pathname.includes('programs.html')) {
+                    programTitle.textContent = program.title;
+                }
+                
+                // Program alt başlığını güncelle
+                const programSubtitle = document.querySelector('.hero-subtitle');
+                if (programSubtitle && window.location.pathname.includes('programs.html')) {
+                    programSubtitle.textContent = program.subtitle;
+                }
+                
+                // Program açıklamasını güncelle
+                const programDescription = document.querySelector('.hero-description');
+                if (programDescription && window.location.pathname.includes('programs.html')) {
+                    programDescription.textContent = program.description;
+                }
+            }
+            
+            // İletişim verilerini yükle
+            const contactData = localStorage.getItem('contactData');
+            if (contactData) {
+                const contact = JSON.parse(contactData);
+                
+                // E-posta güncelle
+                const emailElement = document.querySelector('.contact-details p');
+                if (emailElement && emailElement.textContent.includes('@')) {
+                    emailElement.textContent = contact.email;
+                }
+                
+                // Telefon güncelle
+                const phoneElements = document.querySelectorAll('.contact-details p');
+                phoneElements.forEach(el => {
+                    if (el.textContent.includes('+90')) {
+                        el.textContent = contact.phone;
+                    }
+                });
+                
+                // Adres güncelle
+                const addressElements = document.querySelectorAll('.contact-details p');
+                addressElements.forEach(el => {
+                    if (el.textContent.includes('İstanbul')) {
+                        el.textContent = contact.address;
+                    }
+                });
+            }
+        }
+        
+        // Sayfa yüklendiğinde admin verilerini yükle
+        document.addEventListener('DOMContentLoaded', loadAdminData);
+    </script>
 </body>
 </html>
